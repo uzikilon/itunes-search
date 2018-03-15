@@ -18,7 +18,6 @@ class Container extends Component {
     fetch(`https://itunes.apple.com/search?${Object.keys(data).map(k => `${k}=${encodeURIComponent(data[k])}`).join('&')}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.setState({ 
           results: data.results, 
           pending: false 

@@ -8,7 +8,7 @@ function Row(props) {
     <tr>
       <td>{ props.counter }</td>
       <td><a target="_blank" href={props.data.artistViewUrl}>{ props.data.artistName }</a></td>
-      <td><a href="#" onMouseOver={() => props.playMedia(props.data)}>{ props.data.trackName }</a></td>
+      <td><a onMouseOver={() => props.playMedia(props.data)}>{ props.data.trackName }</a></td>
       <td>{ props.data.trackPrice } {props.data.currency}</td>
       <td>{ props.data.kind }</td>
       <td>{ props.data.releaseDate }</td>
@@ -28,7 +28,7 @@ class SearchResults extends Component {
     this.stopMedia = this.stopMedia.bind(this);
   }
 
-  pagerOnClick(page, disabled) {
+  setPage(page, disabled) {
     if (!disabled) {
       this.setState({page});
     }
@@ -36,7 +36,7 @@ class SearchResults extends Component {
 
   createPagination() {
     const numPages = Math.ceil(this.props.results.length / RESULTS_PER_PAGE);
-    if (numPages == 1) {
+    if (numPages === 1) {
       return '';
     }
     
@@ -44,21 +44,19 @@ class SearchResults extends Component {
     for (let i = 1; i <= numPages; i++) {
       const active = i === this.state.page;
       items.push(
-        <Pagination.Item onClick={() => this.pagerOnClick(i, active)} key={i} active={active}>{i}</Pagination.Item>
+        <Pagination.Item onClick={() => this.setPage(i, active)} key={i} active={active}>{i}</Pagination.Item>
       );
     }
 
-    const isFirst = this.state.page == 1;
-    const isLast = this.state.page == numPages;
+    const isFirst = this.state.page === 1;
+    const isLast = this.state.page === numPages;
     return (
       <Pager>
-        <Pagination.Item previous onClick={() => this.pagerOnClick(this.state.page - 1, isFirst)} disabled={isFirst}><Glyphicon glyph="chevron-left" /></Pagination.Item>
+        <Pagination.Item onClick={() => this.setPage(this.state.page - 1, isFirst)} disabled={isFirst}><Glyphicon glyph="chevron-left" /></Pagination.Item>
         {items}
-        <Pagination.Item next onClick={() => this.pagerOnClick(this.state.page + 1, isLast)} disabled={isLast}><Glyphicon glyph="chevron-right" /></Pagination.Item>
+        <Pagination.Item onClick={() => this.setPage(this.state.page + 1, isLast)} disabled={isLast}><Glyphicon glyph="chevron-right" /></Pagination.Item>
       </Pager>
     )
-
-    
   }
 
   playMedia(data) {
@@ -110,17 +108,17 @@ class SearchResults extends Component {
         {this.createPagination()}
         
         <div className="static-modal">
-        <Modal show={!!this.state.mediaPlayer} onHide={this.stopMedia}>
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Media Player</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {this.state.mediaPlayer}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.stopMedia}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+          <Modal show={!!this.state.mediaPlayer} onHide={this.stopMedia}>
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title">Media Player</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {this.state.mediaPlayer}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={this.stopMedia}>Close</Button>
+            </Modal.Footer>
+          </Modal>
         </div>
 
       </div>
