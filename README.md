@@ -2,10 +2,10 @@
 
 Working demo: https://uzikilon.github.io/itunes-search/index.html
 
-This app was created using [Create React App](https://github.com/facebook/create-react-app)
+This app was created using [create-react-app](https://github.com/facebook/create-react-app)
 
 Other compoments used:
-- react-bootstrap
+- [react-bootstrap](https://react-bootstrap.github.io)
 
 ### Requirements 
 - Node.js (Tested on v9.7.2)
