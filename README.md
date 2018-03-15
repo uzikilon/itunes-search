@@ -1,8 +1,8 @@
 # iTunes Search 
 
-### This app was created using [Create React App](https://github.com/facebook/create-react-app)
+#### This app was created using [Create React App](https://github.com/facebook/create-react-app)
 
-### Other compoments used:
+#### Other compoments used:
 - react-bootstrap
 
 ### Requirements 
