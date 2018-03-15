@@ -1,8 +1,10 @@
 # iTunes Search 
 
-#### This app was created using [Create React App](https://github.com/facebook/create-react-app)
+Working demo: https://uzikilon.github.io/itunes-search/
 
-#### Other compoments used:
+This app was created using [Create React App](https://github.com/facebook/create-react-app)
+
+Other compoments used:
 - react-bootstrap
 
 ### Requirements 
