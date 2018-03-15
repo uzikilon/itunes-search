@@ -1,6 +1,6 @@
 # iTunes Search 
 
-Working demo: https://uzikilon.github.io/itunes-search/
+Working demo: https://uzikilon.github.io/itunes-search/index.html
 
 This app was created using [Create React App](https://github.com/facebook/create-react-app)
 
